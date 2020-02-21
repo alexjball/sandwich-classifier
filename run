@@ -1,0 +1,32 @@
+#!/bin/bash
+
+cd $(dirname $BASH_SOURCE)
+
+IMAGE_NAME=sammich
+
+case "$1" in
+  build)
+    docker build -t $IMAGE_NAME .
+    ;;
+  up)
+    docker run \
+      -it \
+      --rm \
+      -d \
+      -v ~/dev/sandwich-classifier:/app \
+      --name fastai \
+      -p 5000:5000 \
+      -p 8888:8888 \
+      $IMAGE_NAME \
+      tail -f /dev/null
+    ;;
+  down)
+    docker container kill fastai
+    ;;
+  shell)
+    docker exec -it fastai /bin/bash
+    ;;
+  start-jupyter)
+    docker exec -it fastai jupyter notebook --ip 0.0.0.0 --allow-root
+    ;;
+esac

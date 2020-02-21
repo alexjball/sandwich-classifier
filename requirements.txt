@@ -1,0 +1,8 @@
+fastai
+jupyter
+notebook
+jupyter_contrib_nbextensions
+Flask
+gunicorn
+pytest
+requests

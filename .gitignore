@@ -1,1 +1,12 @@
 .env
+create-instance.env
+
+.ipynb_checkpoints
+__pycache__
+.pytest_cache
+
+server.crt
+server.csr
+server.key
+
+.DS_Store

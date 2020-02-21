@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  classifier-service:
+    build: .
+    
+  frontend:
+    image: nginx
+    volumes:
+      - .:/app
+      - $CERTIFICATE:/cert.pem
+      - $CERTIFICATE_KEY:/cert-key.pem
+    ports:
+      - "443:443"
+      - "80:80"
+    environment:
+      - NGINX_HOST=${FRONTEND_HOST:-frontend}
+    command: /app/start-frontend

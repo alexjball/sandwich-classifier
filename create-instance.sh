@@ -2,7 +2,7 @@
 
 cd $(dirname $BASH_SOURCE)
 
-[ -e .env ] && . .env
+[ -e .env ] && . create-instance.env
 
 gcloud compute instances create $INSTANCE_NAME \
         --service-account=$SERVICE_ACCOUNT \
