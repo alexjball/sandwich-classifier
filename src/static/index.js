@@ -7,7 +7,7 @@ form.addEventListener('submit', event => {
 })
 
 function fetchClassification() {
-  fetch('http://localhost/classify', {
+  fetch('/classify', {
     method: "POST",
     body: new FormData(form)
   }).then(response => {
